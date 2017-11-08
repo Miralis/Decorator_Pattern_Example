@@ -8,7 +8,7 @@ public class Circle implements Shape {
 
     @Override
     public void draw() {
-        //TODO
-        System.out.println("Drawing: Circle");
+        Main.graphicsContext.fillOval(Main.getRandomNumber(Main.canvasWidth - this.radius), Main.getRandomNumber(Main.canvasHeight - this.radius), this.radius, this.radius);
+        Main.graphicsContext.restore();
     }
 }
