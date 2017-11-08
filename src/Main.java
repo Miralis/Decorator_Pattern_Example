@@ -1,15 +1,18 @@
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     public static GraphicsContext graphicsContext;
     public static int canvasWidth = 479;
     public static int canvasHeight = 266;
+
+    private static Room r;
 
     public static void main(String[] args) {
         launch(args);
@@ -18,23 +21,41 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Decorator Demo");
-        Group root = new Group();
+
+        VBox verticalItems = new VBox(0);
+        HBox buttons = new HBox(5);
+
         Canvas canvas = new Canvas(canvasWidth, canvasHeight);
         graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.save();
-        root.getChildren().add(canvas);
+        verticalItems.getChildren().add(canvas);
 
-        Room r = new OdysseyRoom();
+        r = new OdysseyRoom();
         r.draw();
 
         Button b = new Button("Pika!");
-        root.getChildren().add(b);
+        buttons.getChildren().add(b);
         b.setOnAction(e -> {
             Room room = new PikaDecoration(r);
-            room.draw();
+            setRoom(room);
+            r.draw();
         });
 
-        primaryStage.setScene(new Scene(root));
+        Button b2 = new Button("3 more plz");
+        buttons.getChildren().add(b2);
+        b2.setOnAction(e ->{
+            Room room = new YoshiCoinDecoration(new KirbyStickerDecoration(new PiranhaDecoration(r)));
+            setRoom(room);
+            r.draw();
+        });
+
+        verticalItems.getChildren().add(buttons);
+
+        primaryStage.setScene(new Scene(verticalItems));
         primaryStage.show();
+    }
+
+    private void setRoom(Room room){
+        r = room;
     }
 }
