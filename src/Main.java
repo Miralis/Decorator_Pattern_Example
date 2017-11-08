@@ -21,6 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Decorator Demo");
+        primaryStage.setResizable(false);
 
         VBox verticalItems = new VBox(0);
         HBox buttons = new HBox(5);
@@ -39,6 +40,7 @@ public class Main extends Application {
             Room room = new PikaDecoration(r);
             setRoom(room);
             r.draw();
+            b.setDisable(true);
         });
 
         Button b2 = new Button("3 more plz");
@@ -47,11 +49,22 @@ public class Main extends Application {
             Room room = new YoshiCoinDecoration(new KirbyStickerDecoration(new PiranhaDecoration(r)));
             setRoom(room);
             r.draw();
+            b2.setDisable(true);
+        });
+
+        Button resetButton = new Button("RESET");
+        buttons.getChildren().add(resetButton);
+        resetButton.setOnAction(e ->{
+            setRoom(new OdysseyRoom());
+            r.draw();
+
+            b.setDisable(false);
+            b2.setDisable(false);
         });
 
         verticalItems.getChildren().add(buttons);
 
-        primaryStage.setScene(new Scene(verticalItems));
+        primaryStage.setScene(new Scene(verticalItems, canvasWidth - 10, canvasHeight + 15));
         primaryStage.show();
     }
 
