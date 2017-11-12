@@ -1,7 +1,7 @@
 import javafx.scene.image.Image;
 
-public class KirbyStickerDecoration extends RoomDecorator{
-    public KirbyStickerDecoration(Room decoratedRoom) {
+public class KirbyStickerDecorator extends RoomDecorator{
+    public KirbyStickerDecorator(Room decoratedRoom) {
         super(decoratedRoom);
     }
 

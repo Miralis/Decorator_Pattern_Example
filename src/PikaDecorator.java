@@ -1,7 +1,7 @@
 import javafx.scene.image.Image;
 
-public class PikaDecoration extends RoomDecorator {
-    public PikaDecoration(Room decoratedRoom) {
+public class PikaDecorator extends RoomDecorator {
+    public PikaDecorator(Room decoratedRoom) {
         super(decoratedRoom);
     }
 

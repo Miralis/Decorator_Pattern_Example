@@ -7,6 +7,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.AudioInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+
 public class Main extends Application {
     public static GraphicsContext graphicsContext;
     public static int canvasWidth = 479;
@@ -37,7 +43,7 @@ public class Main extends Application {
         Button b = new Button("Pika!");
         buttons.getChildren().add(b);
         b.setOnAction(e -> {
-            Room room = new PikaDecoration(r);
+            Room room = new PikaDecorator(r);
             setRoom(room);
             r.draw();
             b.setDisable(true);
@@ -46,7 +52,7 @@ public class Main extends Application {
         Button b2 = new Button("3 more plz");
         buttons.getChildren().add(b2);
         b2.setOnAction(e ->{
-            Room room = new YoshiCoinDecoration(new KirbyStickerDecoration(new PiranhaDecoration(r)));
+            Room room = new YoshiCoinDecorator(new KirbyStickerDecorator(new PiranhaDecorator(r)));
             setRoom(room);
             r.draw();
             b2.setDisable(true);
@@ -68,7 +74,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void setRoom(Room room){
+    private void setRoom(Room room) {
         r = room;
     }
 }

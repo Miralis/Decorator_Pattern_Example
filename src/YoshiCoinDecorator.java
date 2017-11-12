@@ -1,7 +1,7 @@
 import javafx.scene.image.Image;
 
-public class YoshiCoinDecoration extends RoomDecorator{
-    public YoshiCoinDecoration(Room decoratedRoom) {
+public class YoshiCoinDecorator extends RoomDecorator{
+    public YoshiCoinDecorator(Room decoratedRoom) {
         super(decoratedRoom);
     }
 

@@ -1,7 +1,7 @@
 import javafx.scene.image.Image;
 
-public class PiranhaDecoration extends RoomDecorator {
-    public PiranhaDecoration(Room decoratedRoom) {
+public class PiranhaDecorator extends RoomDecorator {
+    public PiranhaDecorator(Room decoratedRoom) {
         super(decoratedRoom);
     }
 
