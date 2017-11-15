@@ -6,5 +6,5 @@ public interface Room {
     /**
      * Draws the Room
      */
-    void draw();
+    void draw(Graphics graphics);
 }

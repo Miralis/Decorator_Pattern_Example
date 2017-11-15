@@ -9,15 +9,15 @@ public class YoshiCoinDecorator extends RoomDecorator{
     }
 
     @Override
-    public void draw() {
-        decoratedRoom.draw();
-        addYoshiCoin();
+    public void draw(Graphics graphics) {
+        decoratedRoom.draw(graphics);
+        addYoshiCoin(graphics);
     }
 
     /**
-     * Draws the yoshiCoin.png Image onto the static graphicsContext of the Main class.
+     * Draws the yoshiCoin.png Image onto the given Graphics.
      */
-    private void addYoshiCoin(){
-        Main.graphicsContext.drawImage(new Image("/images/yoshiCoin.png"), 70, 20);
+    private void addYoshiCoin(Graphics graphics){
+        graphics.getGraphicsContext().drawImage(new Image("/images/yoshiCoin.png"), 70, 20);
     }
 }

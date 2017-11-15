@@ -9,10 +9,10 @@ public class OdysseyRoom implements Room {
     }
 
     /**
-     * Draws the Room.png Image onto the static graphicsContext of the Main class.
+     * Draws the Room.png Image onto the given Graphics.
      */
     @Override
-    public void draw() {
-        Main.graphicsContext.drawImage(new Image("/images/Room.png"), 0, 0);
+    public void draw(Graphics graphics) {
+        graphics.getGraphicsContext().drawImage(new Image("/images/Room.png"), 0, 0);
     }
 }

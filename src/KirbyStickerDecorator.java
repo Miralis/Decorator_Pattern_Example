@@ -9,15 +9,15 @@ public class KirbyStickerDecorator extends RoomDecorator{
     }
 
     @Override
-    public void draw() {
-        decoratedRoom.draw();
-        addKirbySticker();
+    public void draw(Graphics graphics) {
+        decoratedRoom.draw(graphics);
+        addKirbySticker(graphics);
     }
 
     /**
-     * Draws the kirbySticker.png Image onto the static graphicsContext of the Main class.
+     * Draws the kirbySticker.png Image given Graphics.
      */
-    private void addKirbySticker(){
-        Main.graphicsContext.drawImage(new Image("/images/kirbySticker.png"), 400, 150);
+    private void addKirbySticker(Graphics graphics){
+        graphics.getGraphicsContext().drawImage(new Image("/images/kirbySticker.png"), 400, 150);
     }
 }

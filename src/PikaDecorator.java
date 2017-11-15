@@ -9,15 +9,15 @@ public class PikaDecorator extends RoomDecorator {
     }
 
     @Override
-    public void draw() {
-        decoratedRoom.draw();
-        addPikachu();
+    public void draw(Graphics graphics) {
+        decoratedRoom.draw(graphics);
+        addPikachu(graphics);
     }
 
     /**
-     * Draws the pika.png Image onto the static graphicsContext of the Main class.
+     * Draws the pika.png Image onto the given Graphics.
      */
-    private void addPikachu(){
-        Main.graphicsContext.drawImage(new Image("/images/pika.png"), 330, 55);
+    private void addPikachu(Graphics graphics){
+        graphics.getGraphicsContext().drawImage(new Image("/images/pika.png"), 330, 55);
     }
 }

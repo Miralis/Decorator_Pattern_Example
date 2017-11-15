@@ -9,7 +9,7 @@ public class RoomDecorator implements Room {
     }
 
     @Override
-    public void draw() {
-        decoratedRoom.draw();
+    public void draw(Graphics graphics) {
+        decoratedRoom.draw(graphics);
     }
 }

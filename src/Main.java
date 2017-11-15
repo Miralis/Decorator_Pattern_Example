@@ -1,7 +1,5 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,13 +10,11 @@ import javafx.stage.Stage;
  * starts and manages the Application
  */
 public class Main extends Application {
-    public static GraphicsContext graphicsContext;
     public static int canvasWidth = 479;
     public static int canvasHeight = 266;
 
-    private Canvas canvas = new Canvas(canvasWidth, canvasHeight);
-
     private static Room r;
+    private static Stage stage;
 
     /**
      * Launches the Application
@@ -40,20 +36,20 @@ public class Main extends Application {
         VBox verticalItems = new VBox(0);
         HBox buttons = new HBox(5);
 
-        Canvas canvas = new Canvas(canvasWidth, canvasHeight);
-        graphicsContext = canvas.getGraphicsContext2D();
-        graphicsContext.save();
-        verticalItems.getChildren().add(canvas);
+        Graphics g = new Graphics();
+        verticalItems.getChildren().add(g.getCanvas());
 
         r = new OdysseyRoom();
-        r.draw();
+        r.draw(g);
+        g.saveGraphicsContext();
 
         Button b = new Button("Pika!");
         buttons.getChildren().add(b);
         b.setOnAction(e -> {
             Room room = new PikaDecorator(r);
             setRoom(room);
-            r.draw();
+            g.restoreGraphicsContext();
+            r.draw(g);
             b.setDisable(true);
         });
 
@@ -62,7 +58,8 @@ public class Main extends Application {
         b2.setOnAction(e ->{
             Room room = new YoshiCoinDecorator(new KirbyStickerDecorator(new PiranhaDecorator(r)));
             setRoom(room);
-            r.draw();
+            g.restoreGraphicsContext();
+            r.draw(g);
             b2.setDisable(true);
         });
 
@@ -70,7 +67,8 @@ public class Main extends Application {
         buttons.getChildren().add(resetButton);
         resetButton.setOnAction(e ->{
             setRoom(new OdysseyRoom());
-            r.draw();
+            g.restoreGraphicsContext();
+            r.draw(g);
 
             b.setDisable(false);
             b2.setDisable(false);
@@ -80,6 +78,7 @@ public class Main extends Application {
 
         primaryStage.setScene(new Scene(verticalItems, canvasWidth - 10, canvasHeight + 15));
         primaryStage.show();
+        stage = primaryStage;
     }
 
     /**
@@ -88,5 +87,12 @@ public class Main extends Application {
      */
     private void setRoom(Room room) {
         r = room;
+    }
+
+    /**
+     * Closes the Window
+     */
+    public static void close(){
+        stage.close();
     }
 }
