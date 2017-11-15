@@ -1,3 +1,6 @@
+/**
+ * Decorator for the Room Interface
+ */
 public class RoomDecorator implements Room {
     protected Room decoratedRoom;
 

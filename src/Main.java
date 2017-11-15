@@ -7,23 +7,31 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.sound.sampled.AudioInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-
+/**
+ * The Main class ...
+ * starts and manages the Application
+ */
 public class Main extends Application {
     public static GraphicsContext graphicsContext;
     public static int canvasWidth = 479;
     public static int canvasHeight = 266;
 
+    private Canvas canvas = new Canvas(canvasWidth, canvasHeight);
+
     private static Room r;
 
+    /**
+     * Launches the Application
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Creates the JavaFX window
+     * @param primaryStage Stage
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Decorator Demo");
@@ -74,6 +82,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Sets the static Room r variable in Main to the given Room variable
+     * @param room Room
+     */
     private void setRoom(Room room) {
         r = room;
     }
