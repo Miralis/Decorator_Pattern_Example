@@ -1,6 +1,8 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -76,6 +78,9 @@ public class Main extends Application {
 
         verticalItems.getChildren().add(buttons);
 
+
+
+
         primaryStage.setScene(new Scene(verticalItems, canvasWidth - 10, canvasHeight + 15));
         primaryStage.show();
         stage = primaryStage;
@@ -94,5 +99,11 @@ public class Main extends Application {
      */
     public static void close(){
         stage.close();
+    }
+
+    private void compareColors(Graphics g){
+        WritableImage i = g.getCanvas().snapshot(null, null);
+        PixelReader pxr = i.getPixelReader();
+        System.out.println(pxr.getColor(345, 60));
     }
 }
