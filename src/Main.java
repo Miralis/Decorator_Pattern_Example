@@ -6,6 +6,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.util.Collections;
+import java.io.ObjectInputStream;
 
 /**
  * The Main class ...
@@ -58,7 +60,7 @@ public class Main extends Application {
         Button b2 = new Button("3 more plz");
         buttons.getChildren().add(b2);
         b2.setOnAction(e ->{
-            Room room = new YoshiCoinDecorator(new KirbyStickerDecorator(new PiranhaDecorator(r)));
+            Room room = new BowserDecorator(new YoshiCoinDecorator(new KirbyStickerDecorator(new PiranhaDecorator(r))));
             setRoom(room);
             g.restoreGraphicsContext();
             r.draw(g);
